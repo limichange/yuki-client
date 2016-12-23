@@ -8,7 +8,11 @@ const module = {
       state.nickname = nickname
     }
   },
-  actions: {},
+  actions: {
+    updateNickname ({ commit, nickname }) {
+      commit('updateNickname', nickname)
+    }
+  },
   getters: {
     currentUser (state) {
       return state
