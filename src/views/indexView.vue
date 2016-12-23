@@ -1,17 +1,17 @@
 <template lang="pug">
   .indexView
     h1 indexView
-    y-dialog
+    signInDialog
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
-  import { dialog } from '../components'
+  import { signInDialog } from '../components'
 
   export default {
     name: 'indexView',
     components: {
-      'yDialog': dialog
+      'signInDialog': signInDialog
     },
     computed: mapGetters({
       me: 'me/me'

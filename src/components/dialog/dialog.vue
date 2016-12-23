@@ -1,7 +1,8 @@
 <template lang="pug">
   .overlay(@click.self="close", v-show="visible")
     button.closeBtn(@click.self="close") ×
-    .dialogContent dialogContent
+    .dialogContent
+      slot
 </template>
 
 <script>
@@ -20,7 +21,7 @@
   }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   .closeBtn
     font-size: 32px
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif
