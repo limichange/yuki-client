@@ -9,7 +9,11 @@ const module = {
     }
   },
   actions: {},
-  getters: {}
+  getters: {
+    currentUser (state) {
+      return state
+    }
+  }
 }
 
 export default module
