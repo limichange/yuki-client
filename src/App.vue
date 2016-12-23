@@ -1,11 +1,17 @@
 <template lang="pug">
   #app
+    site-nav
     router-view
 </template>
 
 <script>
+  import siteNav from './components/siteNav'
+
   export default {
-    name: 'app'
+    name: 'app',
+    components: {
+      siteNav
+    }
   }
 </script>
 

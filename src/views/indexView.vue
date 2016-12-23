@@ -1,5 +1,6 @@
 <template lang="pug">
-  .indexView indexView
+  .indexView
+    h1 indexView
 </template>
 
 <script>
