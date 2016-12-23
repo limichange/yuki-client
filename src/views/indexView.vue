@@ -1,6 +1,8 @@
 <template lang="pug">
   .indexView
     h1 indexView
+    p
+      input
 </template>
 
 <script>

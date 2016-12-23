@@ -2,7 +2,8 @@ const module = {
   namespaced: true,
   state: {
     nickname: '',
-    avatar: ''
+    avatar: '',
+    uuid: ''
   },
   mutations: {
     updateNickname (state, nickname) {
@@ -10,6 +11,9 @@ const module = {
     },
     updateAvatar (state, avatar) {
       state.avatar = avatar
+    },
+    updateUUID (state, uuid) {
+      state.uuid = uuid
     }
   },
   actions: {
@@ -18,9 +22,8 @@ const module = {
     }
   },
   getters: {
-    me (state) {
-      return state
-    }
+    me: state => state,
+    uuid: state => state.uuid
   }
 }
 

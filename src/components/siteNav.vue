@@ -7,6 +7,8 @@
        router-link(to="/me")
          img.avatar(:src="me.avatar")
          span(v-text="me.nickname")
+     li 登录
+     li 注册
 </template>
 
 <script>
@@ -23,6 +25,7 @@
       api.me.get().then(({ data }) => {
         commit('me/updateAvatar', data.avatar)
         commit('me/updateNickname', data.nickname)
+        commit('me/updateUUID', data.uuid)
       })
     }
   }
