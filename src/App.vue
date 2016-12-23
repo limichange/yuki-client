@@ -18,4 +18,5 @@
 <style lang="sass">
   #app
     font-family: 'Avenir', Helvetica, Arial, sans-serif
+    background: #fafafa
 </style>

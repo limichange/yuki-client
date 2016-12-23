@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import { sync } from 'vuex-router-sync'
+import 'normalize.css'
 
 sync(store, router)
 

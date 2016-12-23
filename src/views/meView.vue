@@ -5,6 +5,10 @@
 
 <script>
   export default {
+    name: 'meView',
+    mounted () {
+
+    }
   }
 </script>
 

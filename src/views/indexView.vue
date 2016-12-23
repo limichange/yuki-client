@@ -8,9 +8,9 @@
 
   export default {
     name: 'indexView',
-    computed: mapGetters([
-      'currentUser'
-    ])
+    computed: mapGetters({
+      me: 'me/me'
+    })
   }
 </script>
 

@@ -1,12 +1,15 @@
 const module = {
-  namespace: 'currentUser/',
+  namespaced: true,
   state: {
-    nickname: 'houyao',
-    avatar: 'http://tva3.sinaimg.cn/crop.0.0.1000.1000.50/640be1fbjw8eoguijlr7fj20rs0rttba.jpg'
+    nickname: '',
+    avatar: ''
   },
   mutations: {
     updateNickname (state, nickname) {
       state.nickname = nickname
+    },
+    updateAvatar (state, avatar) {
+      state.avatar = avatar
     }
   },
   actions: {
@@ -15,7 +18,7 @@ const module = {
     }
   },
   getters: {
-    currentUser (state) {
+    me (state) {
       return state
     }
   }
