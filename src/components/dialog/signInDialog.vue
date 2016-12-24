@@ -1,13 +1,13 @@
 <template lang="pug">
-  i-dialog
+  yuki-dialog
     .signInDialog
       .item
         label 账号：
-          input
+          input(v-model="username")
       .item
         label 密码：
-          input
-      button 登录
+          input(v-model="password")
+      button(@click="submit") 登录
 </template>
 
 <script>
@@ -15,8 +15,19 @@
 
   export default {
     name: 'signInDialog',
+    data () {
+      return {
+        username: '',
+        password: ''
+      }
+    },
     components: {
-      'iDialog': dialog
+      'yukiDialog': dialog
+    },
+    methods: {
+      submit () {
+        console.log(this)
+      }
     }
   }
 </script>
