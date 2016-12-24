@@ -19,7 +19,7 @@
   export default {
     name: 'siteNav',
     components: {
-      'sign-in-dialog': signInDialog
+      signInDialog
     },
     computed: mapGetters({
       me: 'me/me'

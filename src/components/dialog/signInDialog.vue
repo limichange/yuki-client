@@ -45,6 +45,7 @@
   .signInDialog
     text-align: center
     padding: 50px
+
   .item
     margin: 10px
 </style>
