@@ -1,5 +1,5 @@
 <template lang="pug">
-  yuki-dialog(v-show="visable")
+  yuki-dialog(v-model="visible")
     .signInDialog
       .item
         label 账号：
@@ -20,7 +20,7 @@
       return {
         username: '',
         password: '',
-        visable: true
+        visible: true
       }
     },
     components: {
@@ -28,13 +28,14 @@
     },
     methods: {
       submit () {
+        const self = this
+
         api.user.signIn({
           username: 'asdf',
           password: 'asdf'
         }).then((res) => {
-          console.log(res)
+          self.visible = false
         })
-        console.log(this)
       }
     }
   }

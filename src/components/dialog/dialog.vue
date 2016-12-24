@@ -8,15 +8,36 @@
 <script>
   export default {
     name: 'dialog',
+    props: ['value'],
     data () {
       return {
         visible: true
+      }
+    },
+    watch: {
+      value (val) {
+        this.visible = val
+      },
+      visible (val) {
+        const self = this
+
+        self.$emit('input', val)
+
+        if (val) {
+          self.$emit('open')
+        } else {
+          self.$emit('close')
+        }
       }
     },
     methods: {
       close () {
         this.visible = false
       }
+    },
+    mounted () {
+      console.log(this)
+      console.log(this.value)
     }
   }
 </script>
@@ -24,7 +45,6 @@
 <style lang="sass" scoped>
   .closeBtn
     font-size: 32px
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif
     letter-spacing: 0
     font-weight: 300
     font-style: normal

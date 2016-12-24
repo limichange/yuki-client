@@ -17,6 +17,9 @@ const module = {
     },
     updateUUID (state, uuid) {
       state.uuid = uuid
+    },
+    updateToken (state, token) {
+      state.token = token
     }
   },
   actions: {

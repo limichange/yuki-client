@@ -3,8 +3,25 @@
 </template>
 
 <script>
+  import dialog from './dialog'
+  import api from '../../api'
+
   export default {
-    name: 'signUpDialog'
+    name: 'signUpDialog',
+    data () {
+      return {
+        username: '',
+        email: '',
+        password: '',
+        visible: true
+      }
+    },
+    components: {
+      'yukiDialog': dialog
+    },
+    methods: {
+      submit: api
+    }
   }
 </script>
 

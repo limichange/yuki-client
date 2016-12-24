@@ -9,13 +9,18 @@
          span(v-text="me.nickname")
      li 登录
      li 注册
+     sign-in-dialog
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
+  import { signInDialog } from '../components'
 
   export default {
     name: 'siteNav',
+    components: {
+      'sign-in-dialog': signInDialog
+    },
     computed: mapGetters({
       me: 'me/me'
     })
