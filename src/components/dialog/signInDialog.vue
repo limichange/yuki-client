@@ -1,5 +1,5 @@
 <template lang="pug">
-  yuki-dialog
+  yuki-dialog(v-show="visable")
     .signInDialog
       .item
         label 账号：
@@ -12,13 +12,15 @@
 
 <script>
   import dialog from './dialog'
+  import api from '../../api'
 
   export default {
     name: 'signInDialog',
     data () {
       return {
         username: '',
-        password: ''
+        password: '',
+        visable: true
       }
     },
     components: {
@@ -26,6 +28,12 @@
     },
     methods: {
       submit () {
+        api.user.signIn({
+          username: 'asdf',
+          password: 'asdf'
+        }).then((res) => {
+          console.log(res)
+        })
         console.log(this)
       }
     }
