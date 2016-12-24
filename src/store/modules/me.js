@@ -1,9 +1,12 @@
+import api from '../../api'
+
 const module = {
   namespaced: true,
   state: {
     nickname: '',
     avatar: '',
-    uuid: ''
+    uuid: '',
+    token: ''
   },
   mutations: {
     updateNickname (state, nickname) {
@@ -19,6 +22,13 @@ const module = {
   actions: {
     updateNickname ({ commit, nickname }) {
       commit('updateNickname', nickname)
+    },
+    getData ({ commit }) {
+      api.me.get().then(({ data }) => {
+        commit('updateAvatar', data.avatar)
+        commit('updateNickname', data.nickname)
+        commit('updateUUID', data.uuid)
+      })
     }
   },
   getters: {

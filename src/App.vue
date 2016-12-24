@@ -11,6 +11,9 @@
     name: 'app',
     components: {
       siteNav
+    },
+    created () {
+      this.$store.dispatch('me/getData')
     }
   }
 </script>

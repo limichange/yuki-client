@@ -13,21 +13,12 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import api from '../api'
 
   export default {
     name: 'siteNav',
     computed: mapGetters({
       me: 'me/me'
-    }),
-    created () {
-      const { commit } = this.$store
-      api.me.get().then(({ data }) => {
-        commit('me/updateAvatar', data.avatar)
-        commit('me/updateNickname', data.nickname)
-        commit('me/updateUUID', data.uuid)
-      })
-    }
+    })
   }
 </script>
 
