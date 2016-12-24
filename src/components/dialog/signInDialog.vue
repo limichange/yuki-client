@@ -1,5 +1,5 @@
 <template lang="pug">
-  yuki-dialog(v-model="visible")
+  yuki-dialog(@close="close", @open="open", v-model="visible")
     .signInDialog
       .item
         label 账号：
@@ -27,6 +27,12 @@
       'yukiDialog': dialog
     },
     methods: {
+      close () {
+        console.log('dialog close !')
+      },
+      open () {
+        console.log('dialog open !')
+      },
       submit () {
         const self = this
 
