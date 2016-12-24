@@ -34,10 +34,6 @@
       close () {
         this.visible = false
       }
-    },
-    mounted () {
-      console.log(this)
-      console.log(this.value)
     }
   }
 </script>
@@ -80,8 +76,4 @@
     display: flex
     z-index: 900
     background-color: rgba(0, 0, 0, .6)
-    width: 100%
-    padding: 0
-    margin: 0
-    border: 0
 </style>

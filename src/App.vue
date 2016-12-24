@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { siteNav } from './components'
+  import siteNav from './components/siteNav'
 
   export default {
     name: 'app',

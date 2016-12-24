@@ -14,7 +14,7 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import { signInDialog } from '../components'
+  import signInDialog from '../components/dialog/signInDialog'
 
   export default {
     name: 'siteNav',
