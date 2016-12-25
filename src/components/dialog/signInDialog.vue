@@ -2,9 +2,15 @@
   i-dialog(@close="close", @open="open", v-model="visible")
     .signInDialog
       .item
-        i-input(v-model="username", placeholder="账号")
+        i-input(
+          @blur="updateUsername",
+          v-model="username",
+          placeholder="账号")
       .item
-        i-input(v-model="password", placeholder="密码")
+        i-input(
+          @blur="updateUsername",
+          v-model="password",
+          placeholder="密码")
       i-button(@click="submit") 登录
 </template>
 
@@ -34,6 +40,12 @@
       },
       open () {
         console.log('dialog open !')
+      },
+      updateUsername () {
+        console.log('updateUsername')
+      },
+      updatePassword () {
+        console.log('updatePassword')
       },
       submit () {
         const self = this

@@ -1,10 +1,17 @@
 <template lang="pug">
-  input.input
+  input.input(
+    @blur="handleBlur")
 </template>
 
 <script>
   export default {
-    name: 'input'
+    name: 'input',
+    methods: {
+      handleBlur (event) {
+        const self = this
+        self.$emit('blur', event)
+      }
+    }
   }
 </script>
 
