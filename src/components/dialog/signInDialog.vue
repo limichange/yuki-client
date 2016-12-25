@@ -1,5 +1,5 @@
 <template lang="pug">
-  yuki-dialog(@close="close", @open="open", v-model="visible")
+  i-dialog(@close="close", @open="open", v-model="visible")
     .signInDialog
       .item
         label 账号：
@@ -7,11 +7,12 @@
       .item
         label 密码：
           input(v-model="password")
-      button(@click="submit") 登录
+      i-button(@click="submit") 登录
 </template>
 
 <script>
   import dialog from './dialog'
+  import button from '../button'
   import api from '../../api'
 
   export default {
@@ -24,7 +25,8 @@
       }
     },
     components: {
-      'yukiDialog': dialog
+      'iDialog': dialog,
+      'iButton': button
     },
     methods: {
       close () {
