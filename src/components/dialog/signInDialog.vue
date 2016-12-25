@@ -2,11 +2,9 @@
   i-dialog(@close="close", @open="open", v-model="visible")
     .signInDialog
       .item
-        label 账号：
-          i-input(v-model="username")
+        i-input(v-model="username", placeholder="账号")
       .item
-        label 密码：
-          i-input(v-model="password")
+        i-input(v-model="password", placeholder="密码")
       i-button(@click="submit") 登录
 </template>
 
