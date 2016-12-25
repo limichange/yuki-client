@@ -3,16 +3,17 @@
     .signInDialog
       .item
         label 账号：
-          input(v-model="username")
+          i-input(v-model="username")
       .item
         label 密码：
-          input(v-model="password")
+          i-input(v-model="password")
       i-button(@click="submit") 登录
 </template>
 
 <script>
   import dialog from './dialog'
   import button from '../button'
+  import input from '../input'
   import api from '../../api'
 
   export default {
@@ -26,6 +27,7 @@
     },
     components: {
       'iDialog': dialog,
+      'iInput': input,
       'iButton': button
     },
     methods: {
