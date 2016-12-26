@@ -18,7 +18,6 @@
       close () {
         const self = this
         self.$emit('close')
-        self.visible = false
       }
     }
   }
