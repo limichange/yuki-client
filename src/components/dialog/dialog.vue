@@ -8,31 +8,17 @@
 <script>
   export default {
     name: 'dialog',
-    props: ['value'],
-    data () {
-      return {
-        visible: true
-      }
-    },
-    watch: {
-      value (val) {
-        this.visible = val
-      },
-      visible (val) {
-        const self = this
-
-        self.$emit('input', val)
-
-        if (val) {
-          self.$emit('open')
-        } else {
-          self.$emit('close')
-        }
+    props: {
+      visible: {
+        type: Boolean,
+        default: false
       }
     },
     methods: {
       close () {
-        this.visible = false
+        const self = this
+        self.$emit('close')
+        self.visible = false
       }
     }
   }

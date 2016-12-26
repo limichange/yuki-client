@@ -11,7 +11,7 @@ const module = {
     updateUsername: (state, username) => { state.username = username },
     updatePassword: (state, password) => { state.password = password },
     open: state => { state.visible = true },
-    hide: state => { state.visible = false }
+    close: state => { state.visible = false }
   },
   actions: {
     signIn ({ commit, state }) {
@@ -19,7 +19,7 @@ const module = {
         username: state.username,
         password: state.password
       }).then(() => {
-        commit('hide')
+        commit('close')
       })
     }
   },

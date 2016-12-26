@@ -1,5 +1,5 @@
 <template lang="pug">
-  i-dialog(@close="hide", @open="open", v-show="visible")
+  i-dialog(@close="close", :visible="visible")
     .signInDialog
       .item
         i-input(
@@ -20,7 +20,7 @@
   import dialog from './dialog'
   import button from '../button'
   import input from '../input'
-  import { mapState, mapMutations } from 'vuex'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'signInDialog',
@@ -35,10 +35,11 @@
       'iButton': button
     },
     methods: {
-      ...mapMutations('signInDialog', [
-        'open',
-        'hide'
-      ]),
+      close () {
+        const self = this
+        self.$emit('close')
+        self.$store.commit('signInDialog/close')
+      },
       updateUsername (e) {
         this.$store.commit('signInDialog/updateUsername', e.target.value)
       },

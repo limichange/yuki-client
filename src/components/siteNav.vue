@@ -7,7 +7,7 @@
        router-link(to="/me")
          img.avatar(:src="me.avatar")
          span(v-text="me.nickname")
-     li 登录
+     li(@click="showSignInDialog") 登录
      li 注册
      sign-in-dialog
 </template>
@@ -23,7 +23,12 @@
     },
     computed: mapGetters({
       me: 'me/me'
-    })
+    }),
+    methods: {
+      showSignInDialog () {
+        this.$store.commit('signInDialog/open')
+      }
+    }
   }
 </script>
 
