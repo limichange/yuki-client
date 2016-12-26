@@ -1,11 +1,17 @@
 <template lang="pug">
-  .button
+  .button(@click="handleClick")
     slot
 </template>
 
 <script>
   export default {
-    name: 'button'
+    name: 'button',
+    methods: {
+      handleClick (event) {
+        const self = this
+        self.$emit('click', event)
+      }
+    }
   }
 </script>
 

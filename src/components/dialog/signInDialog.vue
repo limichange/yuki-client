@@ -1,17 +1,17 @@
 <template lang="pug">
-  i-dialog(@close="close", @open="open", v-model="visible")
+  i-dialog(@close="hide", @open="open", v-show="visible")
     .signInDialog
       .item
         i-input(
-          @blur="updateUsername",
+          @input="updateUsername",
           @keydown.enter="submit",
-          v-model="username",
+          :value="username",
           placeholder="账号")
       .item
         i-input(
-          @blur="updatePassword",
+          @input="updatePassword",
           @keydown.enter="submit",
-          v-model="password",
+          :value="password",
           placeholder="密码")
       i-button(@click="submit") 登录
 </template>
@@ -20,44 +20,33 @@
   import dialog from './dialog'
   import button from '../button'
   import input from '../input'
-  import api from '../../api'
+  import { mapState, mapMutations } from 'vuex'
 
   export default {
     name: 'signInDialog',
-    data () {
-      return {
-        username: '',
-        password: '',
-        visible: true
-      }
-    },
+    computed: mapState('signInDialog', [
+      'username',
+      'password',
+      'visible'
+    ]),
     components: {
       'iDialog': dialog,
       'iInput': input,
       'iButton': button
     },
     methods: {
-      close () {
-        console.log('dialog close !')
+      ...mapMutations('signInDialog', [
+        'open',
+        'hide'
+      ]),
+      updateUsername (e) {
+        this.$store.commit('signInDialog/updateUsername', e.target.value)
       },
-      open () {
-        console.log('dialog open !')
-      },
-      updateUsername () {
-        console.log('updateUsername')
-      },
-      updatePassword () {
-        console.log('updatePassword')
+      updatePassword (e) {
+        this.$store.commit('signInDialog/updatePassword', e.target.value)
       },
       submit () {
-        const self = this
-
-        api.user.signIn({
-          username: 'asdf',
-          password: 'asdf'
-        }).then((res) => {
-          self.visible = false
-        })
+        this.$store.dispatch('signInDialog/signIn')
       }
     }
   }

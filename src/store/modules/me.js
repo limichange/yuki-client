@@ -27,7 +27,7 @@ const module = {
       commit('updateNickname', nickname)
     },
     getData ({ commit }) {
-      api.me.get().then(({ data }) => {
+      return api.me.get().then(({ data }) => {
         commit('updateAvatar', data.avatar)
         commit('updateNickname', data.nickname)
         commit('updateUUID', data.uuid)

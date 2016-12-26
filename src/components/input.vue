@@ -1,6 +1,6 @@
 <template lang="pug">
   input.input(
-    @blur="handleBlur",
+    @input="handleInput",
     @keydown="handleKeydown")
 </template>
 
@@ -8,13 +8,13 @@
   export default {
     name: 'input',
     methods: {
-      handleBlur (event) {
-        const self = this
-        self.$emit('blur', event)
-      },
       handleKeydown (event) {
         const self = this
         self.$emit('keydown', event)
+      },
+      handleInput (event) {
+        const self = this
+        self.$emit('input', event)
       }
     }
   }
