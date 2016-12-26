@@ -4,11 +4,13 @@
       .item
         i-input(
           @blur="updateUsername",
+          @keydown.enter="submit",
           v-model="username",
           placeholder="账号")
       .item
         i-input(
           @blur="updatePassword",
+          @keydown.enter="submit",
           v-model="password",
           placeholder="密码")
       i-button(@click="submit") 登录

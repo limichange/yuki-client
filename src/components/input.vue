@@ -1,6 +1,7 @@
 <template lang="pug">
   input.input(
-    @blur="handleBlur")
+    @blur="handleBlur",
+    @keydown="handleKeydown")
 </template>
 
 <script>
@@ -10,6 +11,10 @@
       handleBlur (event) {
         const self = this
         self.$emit('blur', event)
+      },
+      handleKeydown (event) {
+        const self = this
+        self.$emit('keydown', event)
       }
     }
   }
