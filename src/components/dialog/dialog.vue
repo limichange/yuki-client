@@ -1,5 +1,5 @@
 <template lang="pug">
-  .overlay(@click.self="close", v-show="visible")
+  .overlay(@click.self="close", v-if="visible")
     button.closeBtn(@click.self="close") ×
     .dialogContent
       slot

@@ -1,17 +1,14 @@
 <template lang="pug">
   .siteNav
-    ul
-     li
-       router-link(to="/") index
-     li
-       router-link(to="/me")
-         img.avatar(:src="me.avatar")
-         span(v-text="me.nickname")
-     li
-       button(@click="showSignInDialog") 登录
-     li
-       button 注册
-     sign-in-dialog
+    .contianer
+      .item-list
+         router-link(class="item", to="/index") index
+      .item-list.right
+         router-link(class="item", to="/me")
+           span(v-text="me.nickname")
+         .item(@click="showSignInDialog") 登录
+         .item 注册
+         sign-in-dialog
 </template>
 
 <script>
@@ -39,16 +36,39 @@
 <style lang="sass" scoped>
   .siteNav
     width: 100%
-    font-size: 14px
-    background: #fff
-    color: rgba(0,0,0,.44)
+    background-color: #fff
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25)
+    padding: 25px 60px
+    position: relative
+    box-sizing: border-box
 
-  ul, li
-    list-style: none
-    list-style-image: none
+  .item-list
+    height: 40px
     display: inline-block
-    padding: 0
-    margin: 0
+    vertical-align: top
+    line-height: 40px
+
+    &.right
+      float: right
+
+  .item:hover, .router-link-active
+    border-bottom: 3px solid #42b983
+
+  .item
+    cursor: pointer
+    padding-bottom: 3px
+    text-decoration: none
+    color: #34495e
+    line-height: 40px
+    display: inline-block
+    position: relative
+    margin: 0 0.6em
+
+  .contianer
+    max-width: 1200px
+    margin-left: auto
+    margin-right: auto
+    position: relative
 
   .avatar
     border-radius: 100%
