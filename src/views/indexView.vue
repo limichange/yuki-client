@@ -1,18 +1,20 @@
 <template lang="pug">
   .indexView
-    .quicklyPublish
-      input
-      i-button 发布
     feeds
+      feed.quicklyPublish
+        textarea
+        i-button 发布
 </template>
 
 <script>
   import feeds from '../components/feeds'
+  import feed from '../components/feed'
   import button from '../components/button'
 
   export default {
     name: 'indexView',
     components: {
+      feed,
       feeds,
       'iButton': button
     }
@@ -26,4 +28,6 @@
 
   .quicklyPublish
     text-align: center
+
+    textarea
 </style>
