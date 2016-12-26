@@ -2,17 +2,18 @@
   .siteNav
     .contianer
       .item-list
-         router-link(class="item", to="/index") index
+         router-link(class="item", to="/index") 首页
       .item-list.right
          router-link(class="item", to="/me")
            span(v-text="me.nickname")
-         .item(@click="showSignInDialog") 登录
-         .item 注册
+         .item.logOut(@click="signOut", v-if="me.nickname") 登出
+         .item(@click="showSignInDialog", v-if="!me.nickname") 登录
+         .item(@click="showSingUpDialog", v-if="!me.nickname") 注册
          sign-in-dialog
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapState } from 'vuex'
   import signInDialog from '../components/dialog/signInDialog'
   import signUpDialog from '../components/dialog/signUpDialog'
 
@@ -22,12 +23,18 @@
       signInDialog,
       signUpDialog
     },
-    computed: mapGetters({
-      me: 'me/me'
-    }),
+    computed: mapState([
+      'me'
+    ]),
     methods: {
       showSignInDialog () {
         this.$store.commit('signInDialog/open')
+      },
+      showSingUpDialog () {
+        this.$store.commit('')
+      },
+      signOut () {
+        console.log('signOut')
       }
     }
   }
@@ -63,6 +70,9 @@
     display: inline-block
     position: relative
     margin: 0 0.6em
+
+    &.logOut:hover
+      border-bottom: 3px solid #FF4949
 
   .contianer
     max-width: 1200px
