@@ -7,19 +7,23 @@
        router-link(to="/me")
          img.avatar(:src="me.avatar")
          span(v-text="me.nickname")
-     li(@click="showSignInDialog") 登录
-     li 注册
+     li
+       button(@click="showSignInDialog") 登录
+     li
+       button 注册
      sign-in-dialog
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
   import signInDialog from '../components/dialog/signInDialog'
+  import signUpDialog from '../components/dialog/signUpDialog'
 
   export default {
     name: 'siteNav',
     components: {
-      signInDialog
+      signInDialog,
+      signUpDialog
     },
     computed: mapGetters({
       me: 'me/me'

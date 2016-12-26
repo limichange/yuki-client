@@ -5,7 +5,7 @@ const module = {
   state: {
     username: '',
     password: '',
-    visible: true
+    visible: false
   },
   mutations: {
     updateUsername: (state, username) => { state.username = username },
