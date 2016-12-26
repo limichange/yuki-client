@@ -19,6 +19,7 @@ const module = {
         username: state.username,
         password: state.password
       }).then(() => {
+        commit('me/updateStatus', true, { root: true })
         commit('close')
       })
     }

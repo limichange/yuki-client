@@ -6,7 +6,8 @@ const module = {
     nickname: '',
     avatar: '',
     uuid: '',
-    token: ''
+    token: '',
+    isLogIn: true
   },
   mutations: {
     updateNickname (state, nickname) {
@@ -20,6 +21,9 @@ const module = {
     },
     updateToken (state, token) {
       state.token = token
+    },
+    updateStatus (state, status) {
+      state.isLogIn = status
     }
   },
   actions: {
@@ -32,6 +36,9 @@ const module = {
         commit('updateNickname', data.nickname)
         commit('updateUUID', data.uuid)
       })
+    },
+    signOut ({ commit }) {
+      commit('updateStatus', false)
     }
   },
   getters: {

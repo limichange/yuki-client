@@ -2,13 +2,14 @@
   .siteNav
     .contianer
       .item-list
-         router-link(class="item", to="/index") 首页
+         router-link(class="item", to="/index")
+           span 首页
       .item-list.right
          router-link(class="item", to="/me")
-           span(v-text="me.nickname")
-         .item.logOut(@click="signOut", v-if="me.nickname") 登出
-         .item(@click="showSignInDialog", v-if="!me.nickname") 登录
-         .item(@click="showSingUpDialog", v-if="!me.nickname") 注册
+           span(v-text="me.nickname", v-if="me.isLogIn")
+         .item.logOut(@click="signOut", v-if="me.isLogIn") 登出
+         .item(@click="showSignInDialog", v-if="!me.isLogIn") 登录
+         .item(@click="showSingUpDialog", v-if="!me.isLogIn") 注册
          sign-in-dialog
 </template>
 
@@ -34,7 +35,7 @@
         this.$store.commit('')
       },
       signOut () {
-        console.log('signOut')
+        this.$store.dispatch('me/signOut')
       }
     }
   }
