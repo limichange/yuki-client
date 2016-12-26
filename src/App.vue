@@ -19,7 +19,7 @@
 </script>
 
 <style lang="sass">
-  #app
+  body
     font-family: 'Avenir', Helvetica, Arial, sans-serif
     background: #fafafa
 </style>
