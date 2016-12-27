@@ -1,19 +1,23 @@
 <template lang="pug">
   .feeds
-    slot
+    feed
+      quickly-publish
     feed(v-for="item in feeds")
       .author
         img.avatar(:src="item.author.avatar")
         .nickname(v-text="item.author.nickname")
         .date {{ item.date | timeago }}
-      h2.title(v-text="item.title")
-      p.content(v-text="item.content")
+      h2.title(v-text="item.title", v-if="item.title")
+      p.content(v-text="item.content", v-if="item.content")
       i-button.like Like
+    feed
+      h1 已经没有了
 </template>
 
 <script>
   import { mapState } from 'vuex'
   import button from '../components/button'
+  import quicklyPublish from '../components/quicklyPublish'
   import feed from './feed'
 
   import Timeago from 'timeago.js'
@@ -23,14 +27,15 @@
     name: 'feeds',
     components: {
       'iButton': button,
-      feed
+      feed,
+      quicklyPublish
     },
     computed: mapState([
       'feeds'
     ]),
     filters: {
       timeago (val) {
-        return timeagoInstance.format(val)
+        return timeagoInstance.format(val, 'zh_CN')
       }
     },
     created () {

@@ -1,7 +1,9 @@
 <template lang="pug">
-  feed.quicklyPublish(v-if="me.isLogIn")
+  .quicklyPublish(v-if="me.isLogIn")
     img.avatar(:src="me.avatar")
     i-input(
+      :value="newFeed.content",
+      @input="udpateContent",
       @keydown.enter="submit",
       placeholder="有什么新鲜事？")
 </template>
@@ -9,30 +11,30 @@
 <script>
   import button from './button'
   import input from './input'
-  import feed from './feed'
   import { mapState } from 'vuex'
 
   export default {
     name: 'quicklyPublish',
     computed: mapState([
-      'me'
+      'me',
+      'newFeed'
     ]),
     components: {
-      feed,
       'iButton': button,
       'iInput': input
     },
     methods: {
+      udpateContent (e) {
+        this.$store.commit('newFeed/updateContent', e.target.value)
+      },
       submit () {
         const self = this
-        self.$store.dispatch('feeds/add', {
-          title: '开发者更熟悉的模板与特性',
-          content: 'Vue 使用的是 web 开发者更熟悉的模板与特性，React 的特色在于函数式编程的理念和丰富的技术选型。Vue 比起 React 更容易被前端工程师接受，这是一个直观的感受；React 则更容易吸引在 FP 上持续走下去的开发者。我想更多还是口味的不同。',
-          author: self.me,
-          uuid: '23293jhhuuuauuewewe',
-          type: 'text',
-          date: new Date().getTime()
-        })
+        const $store = self.$store
+
+        $store.commit('newFeed/updateType', 'microText')
+        $store.commit('newFeed/updateAuthor', $store.state.me)
+        $store.commit('newFeed/updateDate', new Date().getTime())
+        $store.dispatch('feeds/add', $store.state.newFeed)
       }
     }
   }

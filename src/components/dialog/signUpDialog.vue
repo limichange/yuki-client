@@ -1,10 +1,26 @@
 <template lang="pug">
-  .signUpDialog signUpDialog
+  i-dialog(@close="close", :visible="visible")
+    .signUpDialog
+      .item
+        i-input(
+          @input="updateUsername",
+          @keydown.enter="submit",
+          :value="username",
+          placeholder="账号")
+      .item
+        i-input(
+          @input="updatePassword",
+          @keydown.enter="submit",
+          :value="password",
+          type="password",
+          placeholder="密码")
+      i-button(@click="submit") 登录
 </template>
 
 <script>
   import dialog from './dialog'
-  import api from '../../api'
+  import button from '../button'
+  import input from '../input'
 
   export default {
     name: 'signUpDialog',
@@ -17,10 +33,11 @@
       }
     },
     components: {
-      'yukiDialog': dialog
+      'iDialog': dialog,
+      'iInput': input,
+      'iButton': button
     },
     methods: {
-      submit: api
     }
   }
 </script>

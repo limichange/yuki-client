@@ -1,18 +1,15 @@
 <template lang="pug">
   .indexView
     feeds
-      quickly-publish
 </template>
 
 <script>
   import feeds from '../components/feeds'
-  import quicklyPublish from '../components/quicklyPublish'
 
   export default {
     name: 'indexView',
     components: {
-      feeds,
-      quicklyPublish
+      feeds
     }
   }
 </script>
