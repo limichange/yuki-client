@@ -12,6 +12,7 @@
           @input="updatePassword",
           @keydown.enter="submit",
           :value="password",
+          type="password",
           placeholder="密码")
       i-button(@click="submit") 登录
 </template>

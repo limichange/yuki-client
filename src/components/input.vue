@@ -1,5 +1,6 @@
 <template lang="pug">
   input.input(
+    :type="type",
     @input="handleInput",
     @keydown="handleKeydown")
 </template>
@@ -7,6 +8,12 @@
 <script>
   export default {
     name: 'input',
+    props: {
+      type: {
+        type: String,
+        default: 'text'
+      }
+    },
     methods: {
       handleKeydown (event) {
         const self = this
