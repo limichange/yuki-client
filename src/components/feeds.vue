@@ -5,7 +5,7 @@
       .author
         img.avatar(:src="item.author.avatar")
         .nickname(v-text="item.author.nickname")
-        .date(v-text="item.date")
+        .date {{ item.date | timeago }}
       h2.title(v-text="item.title")
       p.content(v-text="item.content")
       i-button.like Like
@@ -16,6 +16,9 @@
   import button from '../components/button'
   import feed from './feed'
 
+  import Timeago from 'timeago.js'
+  const timeagoInstance = new Timeago()
+
   export default {
     name: 'feeds',
     components: {
@@ -25,8 +28,13 @@
     computed: mapState([
       'feeds'
     ]),
+    filters: {
+      timeago (val) {
+        return timeagoInstance.format(val)
+      }
+    },
     created () {
-      this.$store.dispatch('feed/getData')
+      this.$store.dispatch('feeds/getData')
     }
   }
 </script>

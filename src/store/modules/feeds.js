@@ -22,6 +22,9 @@ const module = {
         commit('clear')
         commit('set', res.data)
       })
+    },
+    add ({ commit }, feed) {
+      commit('add', feed)
     }
   },
   getters: {}
