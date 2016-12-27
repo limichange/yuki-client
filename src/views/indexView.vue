@@ -3,14 +3,14 @@
     feeds
       feed.quicklyPublish(v-if="me.isLogIn")
         img.avatar(:src="me.avatar")
-        textarea
-        i-button 发布
+        i-input(placeholder="有什么新鲜事？")
 </template>
 
 <script>
   import feeds from '../components/feeds'
   import feed from '../components/feed'
   import button from '../components/button'
+  import input from '../components/input'
   import { mapState } from 'vuex'
 
   export default {
@@ -18,7 +18,8 @@
     components: {
       feed,
       feeds,
-      'iButton': button
+      'iButton': button,
+      'iInput': input
     },
     computed: mapState([
       'me'
@@ -33,6 +34,10 @@
 
   .quicklyPublish
     text-align: center
+    display: flex
+
+    .avatar
+      margin-right: 10px
 
   .avatar
     width: 36px
