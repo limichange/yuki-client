@@ -1,7 +1,8 @@
 <template lang="pug">
   .indexView
     feeds
-      feed.quicklyPublish
+      feed.quicklyPublish(v-if="me.isLogIn")
+        img.avatar(:src="me.avatar")
         textarea
         i-button 发布
 </template>
@@ -10,6 +11,7 @@
   import feeds from '../components/feeds'
   import feed from '../components/feed'
   import button from '../components/button'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'indexView',
@@ -17,7 +19,10 @@
       feed,
       feeds,
       'iButton': button
-    }
+    },
+    computed: mapState([
+      'me'
+    ])
   }
 </script>
 
@@ -29,5 +34,8 @@
   .quicklyPublish
     text-align: center
 
-    textarea
+  .avatar
+    width: 36px
+    height: 36px
+    border-radius: 100%
 </style>
