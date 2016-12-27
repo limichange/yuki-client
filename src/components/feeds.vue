@@ -15,7 +15,6 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
   import button from '../components/button'
   import quicklyPublish from '../components/quicklyPublish'
   import feed from './feed'
@@ -30,9 +29,11 @@
       feed,
       quicklyPublish
     },
-    computed: mapState([
-      'feeds'
-    ]),
+    computed: {
+      feeds () {
+        return this.$store.state.feeds.sort((x, y) => x.date < y.date)
+      }
+    },
     filters: {
       timeago (val) {
         return timeagoInstance.format(val, 'zh_CN')

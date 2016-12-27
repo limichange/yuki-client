@@ -2,18 +2,20 @@ import Vuex from 'vuex'
 import Vue from 'vue'
 Vue.use(Vuex)
 
-import me from './modules/me'
-import signInDialog from './modules/signInDialog'
-import feeds from './modules/feeds'
-import newFeed from './modules/newFeed'
+import modules from './modules'
 
 const store = new Vuex.Store({
-  modules: {
-    me,
-    signInDialog,
-    feeds,
-    newFeed
-  }
+  modules
 })
+
+// if (module.hot) {
+//   module.hot.accept([
+//     './modules'
+//   ], () => {
+//     store.hotUpdate({
+//       modules: require('./modules')
+//     })
+//   })
+// }
 
 export default store

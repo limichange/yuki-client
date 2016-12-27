@@ -2,8 +2,6 @@
   .quicklyPublish(v-if="me.isLogIn")
     img.avatar(:src="me.avatar")
     i-input(
-      :value="newFeed.content",
-      @input="udpateContent",
       @keydown.enter="submit",
       placeholder="有什么新鲜事？")
 </template>
@@ -15,26 +13,33 @@
 
   export default {
     name: 'quicklyPublish',
-    computed: mapState([
-      'me',
-      'newFeed'
-    ]),
+    computed: {
+      ...mapState([
+        'me'
+      ])
+    },
     components: {
       'iButton': button,
       'iInput': input
     },
     methods: {
-      udpateContent (e) {
-        this.$store.commit('newFeed/updateContent', e.target.value)
-      },
-      submit () {
+      submit (e) {
         const self = this
-        const $store = self.$store
+        const { dispatch, state } = self.$store
+        const content = e.target.value
 
-        $store.commit('newFeed/updateType', 'microText')
-        $store.commit('newFeed/updateAuthor', $store.state.me)
-        $store.commit('newFeed/updateDate', new Date().getTime())
-        $store.dispatch('feeds/add', $store.state.newFeed)
+        if (content.trim()) {
+          dispatch('feeds/add', {
+            title: '',
+            content,
+            author: state.me,
+            uuid: '',
+            type: 'microText',
+            date: new Date().getTime()
+          })
+        }
+
+        e.target.value = ''
       }
     }
   }
