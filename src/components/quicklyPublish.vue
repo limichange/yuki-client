@@ -1,7 +1,9 @@
 <template lang="pug">
   feed.quicklyPublish(v-if="me.isLogIn")
     img.avatar(:src="me.avatar")
-    i-input(@keydown.enter="submit", placeholder="有什么新鲜事？")
+    i-input(
+      @keydown.enter="submit",
+      placeholder="有什么新鲜事？")
 </template>
 
 <script>

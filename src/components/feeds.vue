@@ -1,7 +1,7 @@
 <template lang="pug">
   .feeds
     slot
-    feed(v-for="item in feed")
+    feed(v-for="item in feeds")
       .author
         img.avatar(:src="item.author.avatar")
         .nickname(v-text="item.author.nickname")
@@ -23,7 +23,7 @@
       feed
     },
     computed: mapState([
-      'feed'
+      'feeds'
     ]),
     created () {
       this.$store.dispatch('feed/getData')
