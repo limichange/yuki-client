@@ -21,7 +21,7 @@
       },
       handleInput (event) {
         const self = this
-        self.$emit('input', event)
+        self.$emit('input', event.target.value)
       }
     }
   }

@@ -4,8 +4,8 @@ const module = {
   namespaced: true,
   state: [],
   mutations: {
-    set (state, feed) {
-      state.push(...feed)
+    set (state, feeds) {
+      state.push(...feeds)
     },
     clear (state) {
       while (state.length > 0) {

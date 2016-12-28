@@ -1,9 +1,11 @@
 <template lang="pug">
   .quicklyPublish(v-if="me.isLogIn")
     img.avatar(:src="me.avatar")
-    i-input(
+    i-input.input(
+      v-model="content",
       @keydown.enter="submit",
       placeholder="有什么新鲜事？")
+    i-button(@click="submit") 发布
 </template>
 
 <script>
@@ -18,6 +20,11 @@
         'me'
       ])
     },
+    data () {
+      return {
+        content: ''
+      }
+    },
     components: {
       'iButton': button,
       'iInput': input
@@ -26,7 +33,7 @@
       submit (e) {
         const self = this
         const { dispatch, state } = self.$store
-        const content = e.target.value
+        const content = self.content
 
         if (content.trim()) {
           dispatch('feeds/add', {
@@ -39,7 +46,7 @@
           })
         }
 
-        e.target.value = ''
+        self.content = ''
       }
     }
   }
@@ -54,5 +61,9 @@
       width: 36px
       height: 36px
       border-radius: 100%
+
+    .input
       margin-right: 10px
+      margin-left: 10px
+
 </style>
