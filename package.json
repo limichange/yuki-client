@@ -13,10 +13,10 @@
     "axios": "^0.15.3",
     "normalize.css": "^5.0.0",
     "rxjs": "^5.0.2",
-    "vue": "^2.1.7",
+    "vue": "^2.1.8",
     "vue-loader": "^10.0.2",
     "vue-router": "^2.1.1",
-    "vue-template-compiler": "^2.1.7",
+    "vue-template-compiler": "^2.1.8",
     "vuex": "^2.1.1",
     "vuex-router-sync": "^4.0.2"
   },
