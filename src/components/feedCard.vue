@@ -1,16 +1,16 @@
 <template lang="pug">
-  .feed
+  .feedCard
     slot
 </template>
 
 <script>
   export default {
-    name: 'feed'
+    name: 'feedCard'
   }
 </script>
 
 <style lang="sass" scoped>
-  .feed
+  .feedCard
     border-radius: 3px
     padding: 20px
     margin-right: auto

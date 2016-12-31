@@ -2,7 +2,7 @@
   .feeds
     feed
       quickly-publish
-    feed(v-for="item in feeds")
+    feedCard(v-for="item in feeds")
       .author
         img.avatar(:src="item.author.avatar")
         .nickname(v-text="item.author.nickname")
@@ -17,7 +17,7 @@
 <script>
   import button from '../components/button'
   import quicklyPublish from '../components/quicklyPublish'
-  import feed from './feed'
+  import feedCard from './feedCard'
 
   import Timeago from 'timeago.js'
   const timeagoInstance = new Timeago()
@@ -26,7 +26,7 @@
     name: 'feeds',
     components: {
       'iButton': button,
-      feed,
+      feedCard,
       quicklyPublish
     },
     computed: {

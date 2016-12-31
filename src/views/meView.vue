@@ -1,16 +1,16 @@
 <template lang="pug">
   .meView
-    feed
+    feedCard
       h1 个人信息
 </template>
 
 <script>
-  import feed from '../components/feed'
+  import feedCard from '../components/feedCard'
 
   export default {
     name: 'meView',
     components: {
-      feed
+      feedCard
     }
   }
 </script>
