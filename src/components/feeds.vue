@@ -1,6 +1,6 @@
 <template lang="pug">
   .feeds
-    feed
+    feedCard
       quickly-publish
     feedCard(v-for="item in feeds")
       .author
@@ -10,7 +10,7 @@
       h2.title(v-text="item.title", v-if="item.title")
       p.content(v-text="item.content", v-if="item.content")
       i-button.like Like
-    feed
+    feedCard
       h1 已经没有了
 </template>
 
